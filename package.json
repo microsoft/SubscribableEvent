@@ -1,7 +1,18 @@
 {
   "name": "subscribableevent",
   "version": "0.0.1",
-  "description": "A simple strongly-typed pub/sub/fire eventing system. Edit",
+  "description": "A simple strongly-typed pub/sub/fire eventing system",
+  "author": "ReactXP Team <reactxp@microsoft.com>",
+  "license": "MIT",
+  "keywords": [
+    "Typescript",
+    "Eventing",
+    "Subscribable"
+  ],
+  "bugs": {
+    "url": "https://github.com/Microsoft/SubscribableEvent/issues"
+  },
+  "homepage": "https://github.com/Microsoft/SubscribableEvent#readme",
   "main": "dist/SubscribableEvent.js",
   "scripts": {
     "tslint": "tslint --rules-dir './node_modules/tslint-microsoft-contrib' ./src/**/*.ts",
@@ -12,17 +23,6 @@
     "type": "git",
     "url": "git+https://github.com/Microsoft/SubscribableEvent.git"
   },
-  "keywords": [
-    "Typescript",
-    "Eventing",
-    "Subscribable"
-  ],
-  "author": "ReactXP Team <reactxp@microsoft.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Microsoft/SubscribableEvent/issues"
-  },
-  "homepage": "https://github.com/Microsoft/SubscribableEvent#readme",
   "dependencies": {
     "@types/lodash": "^4.14.64",
     "lodash": "^4.17.4"
@@ -31,5 +31,6 @@
     "tslint": "^5.2.0",
     "tslint-microsoft-contrib": "^4.0.1",
     "typescript": "^2.3.2"
-  }
+  },
+  "types": "dist/SubscribableEvent.d.ts"
 }
