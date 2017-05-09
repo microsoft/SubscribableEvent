@@ -20,7 +20,7 @@ export class SubscriptionToken {
     }
 }
 
-export class SubscribableEvent<F extends { (...args: any[]): boolean|void }> {
+export default class SubscribableEvent<F extends { (...args: any[]): boolean|void }> {
     private _subscribers: Function[];
 
     constructor() {
