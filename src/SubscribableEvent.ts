@@ -23,7 +23,9 @@ export class SubscriptionToken {
 export default class SubscribableEvent<F extends { (...args: any[]): boolean|void }> {
     private _subscribers: Function[];
 
-    constructor() {
+    // By default, SubscribableEvent will fire to all subscribers regardless of any conditions.
+    // If you enable allowStopPropagation, then a subscription callback can return a truthy response and it will halt further callbacks.
+    constructor(private _allowStopPropagation = false) {
         this._subscribers = [];
     }
 
@@ -48,7 +50,8 @@ export default class SubscribableEvent<F extends { (...args: any[]): boolean|voi
         // Execute handlers in the reverse order in which they
         // were registered.
         for (let i = subs.length - 1; i >= 0; i--) {
-            if (subs[i].apply(null, args)) {
+            const ret = subs[i].apply(null, args);
+            if (this._allowStopPropagation && !!ret) {
                 // If the value was handled, early out.
                 return true;
             }
