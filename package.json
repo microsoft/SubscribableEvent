@@ -7,7 +7,12 @@
   "keywords": [
     "Typescript",
     "Eventing",
-    "Subscribable"
+    "Subscribable",
+    "subscribe",
+    "publish",
+    "publish/subscribe",
+    "pub/sub",
+    "eventemitter"
   ],
   "bugs": {
     "url": "https://github.com/Microsoft/SubscribableEvent/issues"
@@ -15,22 +20,26 @@
   "homepage": "https://github.com/Microsoft/SubscribableEvent#readme",
   "main": "dist/SubscribableEvent.js",
   "scripts": {
+    "prepare": "npm run build",
     "tslint": "tslint --project tsconfig.json -r tslint.json -r ./node_modules/tslint-microsoft-contrib --fix || true",
-    "prepublish": "npm run tslint && tsc",
-    "build": "npm run tslint && tsc"
+    "build": "npm run tslint && tsc",
+    "test": "jasmine --config=spec/support/jasmine.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Microsoft/SubscribableEvent.git"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.64",
-    "lodash": "^4.17.4"
+    "lodash": "4.17.5"
   },
   "devDependencies": {
-    "tslint": "^5.5.0",
-    "tslint-microsoft-contrib": "^5.0.1",
-    "typescript": "^2.4.1"
+    "@types/jasmine": "2.8.6",
+    "@types/lodash": "4.14.104",
+    "jasmine": "3.0.0",
+    "ts-node": "4.1.0",
+    "tslint": "5.9.1",
+    "tslint-microsoft-contrib": "5.0.3",
+    "typescript": "2.7.2"
   },
   "types": "dist/SubscribableEvent.d.ts"
 }
