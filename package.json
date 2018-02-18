@@ -30,7 +30,7 @@
     "url": "git+https://github.com/Microsoft/SubscribableEvent.git"
   },
   "dependencies": {
-    "lodash": "4.17.5"
+    "lodash": "^4.17.0"
   },
   "devDependencies": {
     "@types/jasmine": "2.8.6",

@@ -1,6 +1,6 @@
 import SubscribableEvent, { SubscriptionToken } from '../src/SubscribableEvent';
 
-const PAYLAOD = 'payload';
+const PAYLOAD = 'payload';
 
 describe('SubscribableEvent', () => {
     it('calls all subscribers on fire', () => {
@@ -10,9 +10,9 @@ describe('SubscribableEvent', () => {
         subscribableEvent.subscribe(subscriber);
         subscribableEvent.subscribe(subscriber);
         subscribableEvent.subscribe(subscriber);
-        subscribableEvent.fire(PAYLAOD);
+        subscribableEvent.fire(PAYLOAD);
 
-        expect(subscriber).toHaveBeenCalledWith(PAYLAOD);
+        expect(subscriber).toHaveBeenCalledWith(PAYLOAD);
         expect(subscriber).toHaveBeenCalledTimes(3);
     });
 
@@ -24,7 +24,7 @@ describe('SubscribableEvent', () => {
 
         subscribableEvent.subscribe(subscriber1);
         subscribableEvent.subscribe(subscriber2);
-        subscribableEvent.fire(PAYLAOD);
+        subscribableEvent.fire(PAYLOAD);
 
         expect(subscriber2).toHaveBeenCalledBefore(subscriber1);
     });
@@ -37,9 +37,9 @@ describe('SubscribableEvent', () => {
 
         subscribableEvent.subscribe(subscriber1);
         subscribableEvent.subscribe(subscriber2).unsubscribe();
-        subscribableEvent.fire(PAYLAOD);
+        subscribableEvent.fire(PAYLOAD);
 
-        expect(subscriber1).toHaveBeenCalledWith(PAYLAOD);
+        expect(subscriber1).toHaveBeenCalledWith(PAYLOAD);
         expect(subscriber1).toHaveBeenCalledTimes(1);
         expect(subscriber2).toHaveBeenCalledTimes(0);
     });
@@ -52,7 +52,7 @@ describe('SubscribableEvent', () => {
         subscribableEvent.subscribe(subscriber);
 
         subscribableEvent.dispose();
-        subscribableEvent.fire(PAYLAOD);
+        subscribableEvent.fire(PAYLOAD);
 
         expect(subscriber).toHaveBeenCalledTimes(0);
     });
@@ -64,8 +64,8 @@ describe('SubscribableEvent', () => {
         subscribableEvent.subscribe(subscriber);
         subscribableEvent.subscribe(subscriber);
 
-        expect(subscribableEvent.fire(PAYLAOD)).toEqual(true);
-        expect(subscriber).toHaveBeenCalledWith(PAYLAOD);
+        expect(subscribableEvent.fire(PAYLOAD)).toEqual(true);
+        expect(subscriber).toHaveBeenCalledWith(PAYLOAD);
         expect(subscriber).toHaveBeenCalledTimes(1);
     });
 });
