@@ -1,14 +1,14 @@
 {
     "compilerOptions": {
-        "strict": true,
         "suppressImplicitAnyIndexErrors": true,
+        "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true,
         "noImplicitAny": true,
-        "declaration": true,
         "noResolve": false,
-        "module": "commonjs",
-        "target": "es5",
-        "outDir": "dist/"
+        "module": "es2015",
+        "target": "es2015",
+        "outDir": "dist-es2015",
+        "strict": true
     },
 
     "include": [
@@ -16,7 +16,7 @@
     ],
 
     "exclude": [
-        "dist",
-        "node_modules"
+        "node_modules",
+        "dist-*"
     ]
 }

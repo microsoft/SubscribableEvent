@@ -5,7 +5,7 @@
   "author": "ReactXP Team <reactxp@microsoft.com>",
   "license": "MIT",
   "keywords": [
-    "Typescript",
+    "TypeScript",
     "Eventing",
     "Subscribable",
     "subscribe",
@@ -18,12 +18,17 @@
     "url": "https://github.com/Microsoft/SubscribableEvent/issues"
   },
   "homepage": "https://github.com/Microsoft/SubscribableEvent#readme",
-  "main": "dist/SubscribableEvent.js",
+  "module": "dist-es2015/SubscribableEvent.js",
+  "main": "dist-cjs/SubscribableEvent.js",
   "scripts": {
+    "clean": "rimraf dist-*",
+    "build:types": "tsc -p tsconfig/types.json",
+    "build:es2015": "tsc -p tsconfig.json",
+    "build:cjs": "tsc -p tsconfig/cjs.json",
+    "build": "run-s clean tslint build:*",
     "prepare": "npm run build",
-    "tslint": "tslint --project tsconfig.json -r tslint.json -r ./node_modules/tslint-microsoft-contrib --fix || true",
-    "build": "npm run tslint && tsc",
-    "test": "jasmine --config=spec/support/jasmine.json"
+    "tslint": "tslint -p tsconfig.json -r tslint.json -r ./node_modules/tslint-microsoft-contrib --fix || true",
+    "test": "ts-node -P ./tsconfig/cjs.json ./node_modules/.bin/jasmine --config=spec/support/jasmine.json"
   },
   "repository": {
     "type": "git",
@@ -33,13 +38,15 @@
     "lodash": "^4.17.0"
   },
   "devDependencies": {
-    "@types/jasmine": "2.8.6",
-    "@types/lodash": "4.14.104",
-    "jasmine": "3.0.0",
-    "ts-node": "4.1.0",
-    "tslint": "5.9.1",
+    "@types/jasmine": "2.8.7",
+    "@types/lodash": "4.14.108",
+    "jasmine": "3.1.0",
+    "npm-run-all": "4.1.3",
+    "rimraf": "2.6.2",
+    "ts-node": "6.0.3",
+    "tslint": "5.10.0",
     "tslint-microsoft-contrib": "5.0.3",
-    "typescript": "2.7.2"
+    "typescript": "2.8.3"
   },
-  "types": "dist/SubscribableEvent.d.ts"
+  "types": "dist-types/SubscribableEvent.d.ts"
 }

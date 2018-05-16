@@ -1,14 +1,14 @@
 /**
-* SubscribableEvent.ts
-*
-* Copyright (c) Microsoft Corporation. All rights reserved.
-* Licensed under the MIT license.
-*
-* A simple strongly-typed pub/sub/fire eventing system.
-*/
+ * SubscribableEvent.ts
+ *
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT license.
+ *
+ * A simple strongly-typed pub/sub/fire eventing system.
+ */
 
-import clone = require('lodash/clone');
-import pull = require('lodash/pull');
+import clone from 'lodash/clone';
+import pull from 'lodash/pull';
 
 export class SubscriptionToken {
     constructor(private _event: SubscribableEvent<any>,
