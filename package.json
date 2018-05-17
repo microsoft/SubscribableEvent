@@ -1,6 +1,6 @@
 {
   "name": "subscribableevent",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple strongly-typed pub/sub/fire eventing system",
   "author": "ReactXP Team <reactxp@microsoft.com>",
   "license": "MIT",
