@@ -41,7 +41,7 @@ export default class SubscribableEvent<F extends { (...args: any[]): boolean|voi
     }
 
     fire: F = <any> ((...args: any[]) => {
-        // Keep reference to the original readonly array, sWe don't want to have it change while we're firing
+        // Keep reference to the original readonly array. We don't want to have it change while we're firing
         const subs = this._subscribers;
 
         // Execute handlers in the reverse order in which they were registered.
