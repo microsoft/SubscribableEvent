@@ -7,9 +7,6 @@
  * A simple strongly-typed pub/sub/fire eventing system.
  */
 
-import clone from 'lodash/clone';
-import pull from 'lodash/pull';
-
 export class SubscriptionToken {
     constructor(private _event: SubscribableEvent<any>,
         private _callback: (...args: any[]) => boolean|void) {
@@ -21,7 +18,7 @@ export class SubscriptionToken {
 }
 
 export default class SubscribableEvent<F extends { (...args: any[]): boolean|void }> {
-    private _subscribers: Function[];
+    private _subscribers: ReadonlyArray<Function>;
 
     // By default, SubscribableEvent will fire to all subscribers regardless of any conditions.
     // If you enable allowStopPropagation, then a subscription callback can return a truthy response and it will halt further callbacks.
@@ -34,21 +31,20 @@ export default class SubscribableEvent<F extends { (...args: any[]): boolean|voi
     }
 
     subscribe(callback: F): SubscriptionToken {
-        this._subscribers.push(callback);
+        this._subscribers = this._subscribers.concat(callback);
 
         return new SubscriptionToken(this, callback);
     }
 
     unsubscribe(callback: F) {
-        pull(this._subscribers, callback);
+        this._subscribers = this._subscribers.filter(value => value !== callback);
     }
 
     fire: F = <any> ((...args: any[]) => {
-        // Clone the array so original can be modified by handlers.
-        const subs = clone(this._subscribers);
+        // Keep reference to the original readonly array, sWe don't want to have it change while we're firing
+        const subs = this._subscribers;
 
-        // Execute handlers in the reverse order in which they
-        // were registered.
+        // Execute handlers in the reverse order in which they were registered.
         for (let i = subs.length - 1; i >= 0; i--) {
             const ret = subs[i].apply(null, args);
             if (this._allowStopPropagation && !!ret) {
