@@ -4,6 +4,12 @@
 
 A simple strongly-typed pub/sub/fire eventing system
 
+## Installation
+
+```shell
+npm install --save subscribableevent
+```
+
 ## Basic Example
 
 ```typescript
