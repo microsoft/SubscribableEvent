@@ -1,8 +1,8 @@
 # SubscribableEvent
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/Microsoft/SubscribableEvent/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/subscribableevent.svg?style=flat-square)](https://www.npmjs.com/package/subscribableevent) [![Build Status](https://img.shields.io/travis/Microsoft/SubscribableEvent/master.svg?style=flat-square)](https://travis-ci.org/Microsoft/SubscribableEvent) [![David](https://img.shields.io/david/Microsoft/SubscribableEvent.svg?style=flat-square)](https://github.com/Microsoft/SubscribableEvent) [![David](https://img.shields.io/david/dev/Microsoft/SubscribableEvent.svg?style=flat-square)](https://github.com/Microsoft/SubscribableEvent)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/Microsoft/SubscribableEvent/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/subscribableevent.svg?style=flat-square)](https://www.npmjs.com/package/subscribableevent) [![Build Status](https://img.shields.io/travis/Microsoft/SubscribableEvent/master.svg?style=flat-square)](https://travis-ci.org/Microsoft/SubscribableEvent) [![David](https://img.shields.io/david/dev/Microsoft/SubscribableEvent.svg?style=flat-square)](https://github.com/Microsoft/SubscribableEvent) ![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/subscribableevent.svg?style=flat-square) ![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/subscribableevent.svg?style=flat-square)
 
-A simple strongly-typed pub/sub/fire eventing system
+> A simple strongly-typed pub/sub/fire eventing system
 
 ## Installation
 
@@ -13,7 +13,7 @@ npm install --save subscribableevent
 ## Basic Example
 
 ```typescript
-const event = new SubscribableEvent<(payload: string) => void>(); 
+const event = new SubscribableEvent<(payload: string) => void>();
 
 event.subscribe((payload: string) => {
     console.log(payload);
