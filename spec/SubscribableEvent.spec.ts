@@ -1,4 +1,4 @@
-import SubscribableEvent, { SubscriptionToken } from '../src/SubscribableEvent';
+import SubscribableEvent from '../src/SubscribableEvent';
 
 const PAYLOAD = 'payload';
 
@@ -18,7 +18,7 @@ describe('SubscribableEvent', () => {
 
     it('calls subscribers in reverse order', () => {
         const subscribableEvent = new SubscribableEvent<(payload: string) => void>();
-        const callback = (payload: string) => {};
+        const callback = (payload: string): void => {};
         const subscriber1 = jasmine.createSpy('subscriber1', callback).and.callThrough();
         const subscriber2 = jasmine.createSpy('subscriber2', callback).and.callThrough();
 
@@ -31,7 +31,7 @@ describe('SubscribableEvent', () => {
 
     it('unsubscribes listener from an event', () => {
         const subscribableEvent = new SubscribableEvent<(payload: string) => void>();
-        const callback = (payload: string) => {};
+        const callback = (payload: string): void => {};
         const subscriber1 = jasmine.createSpy('subscriber1', callback).and.callThrough();
         const subscriber2 = jasmine.createSpy('subscriber2', callback).and.callThrough();
 

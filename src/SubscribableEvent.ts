@@ -9,16 +9,16 @@
 
 export class SubscriptionToken {
     constructor(private _event: SubscribableEvent<any>,
-        private _callback: (...args: any[]) => boolean|void) {
+                private _callback: (...args: any[]) => boolean | void) {
     }
 
-    unsubscribe() {
+    unsubscribe(): void {
         this._event.unsubscribe(this._callback);
     }
 }
 
-export default class SubscribableEvent<F extends { (...args: any[]): boolean|void }> {
-    private _subscribers: ReadonlyArray<Function>;
+export default class SubscribableEvent<F extends { (...args: any[]): boolean | void }> {
+    private _subscribers: readonly Function[];
 
     // By default, SubscribableEvent will fire to all subscribers regardless of any conditions.
     // If you enable allowStopPropagation, then a subscription callback can return a truthy response and it will halt further callbacks.
@@ -26,7 +26,7 @@ export default class SubscribableEvent<F extends { (...args: any[]): boolean|voi
         this._subscribers = [];
     }
 
-    dispose() {
+    dispose(): void {
         this._subscribers = [];
     }
 
@@ -36,11 +36,11 @@ export default class SubscribableEvent<F extends { (...args: any[]): boolean|voi
         return new SubscriptionToken(this, callback);
     }
 
-    unsubscribe(callback: F) {
+    unsubscribe(callback: F): void {
         this._subscribers = this._subscribers.filter(value => value !== callback);
     }
 
-    fire: F = <any> ((...args: any[]) => {
+    fire: F = ((...args: any[]) => {
         // Keep reference to the original readonly array. We don't want to have it change while we're firing
         const subs = this._subscribers;
 
@@ -54,5 +54,5 @@ export default class SubscribableEvent<F extends { (...args: any[]): boolean|voi
         }
 
         return false;
-    });
+    }) as any;
 }
