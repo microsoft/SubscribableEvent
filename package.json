@@ -25,9 +25,10 @@
     "build:types": "tsc -p tsconfig/types.json",
     "build:es2015": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig/cjs.json",
-    "build": "run-s clean tslint build:*",
+    "build": "run-s clean lint build:*",
     "prepare": "npm run build",
-    "tslint": "tslint -p tsconfig.json -r tslint.json -r ./node_modules/tslint-microsoft-contrib --fix || true",
+    "lint": "eslint --config .eslintrc src/*.ts spec/*.ts",
+    "lint:fix": "npm run lint -- --fix",
     "test": "ts-node -P ./tsconfig/cjs.json ./node_modules/.bin/jasmine --config=spec/support/jasmine.json"
   },
   "repository": {
@@ -35,14 +36,16 @@
     "url": "git+https://github.com/Microsoft/SubscribableEvent.git"
   },
   "devDependencies": {
-    "@types/jasmine": "3.3.12",
+    "@types/jasmine": "3.3.13",
+    "@typescript-eslint/eslint-plugin": "1.11.0",
+    "@typescript-eslint/parser": "1.11.0",
+    "eslint": "6.0.1",
+    "eslint-config-skype": "0.1.1",
     "jasmine": "3.4.0",
     "npm-run-all": "4.1.5",
     "rimraf": "2.6.3",
-    "ts-node": "8.1.0",
-    "tslint": "5.16.0",
-    "tslint-microsoft-contrib": "6.1.1",
-    "typescript": "3.4.4"
+    "ts-node": "8.3.0",
+    "typescript": "3.5.2"
   },
   "types": "dist-types/SubscribableEvent.d.ts"
 }

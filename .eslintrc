@@ -1,0 +1,10 @@
+{
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "extends": ["skype"],
+  "env": {
+    "jasmine": true
+  },
+  "rules": {}
+}
