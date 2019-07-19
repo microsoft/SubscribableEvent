@@ -8,8 +8,7 @@
  */
 
 export class SubscriptionToken {
-    constructor(private _event: SubscribableEvent<any>,
-                private _callback: (...args: any[]) => boolean | void) {
+    constructor(private _event: SubscribableEvent<any>, private _callback: (...args: any[]) => boolean | void) {
     }
 
     unsubscribe(): void {
